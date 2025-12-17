@@ -147,7 +147,7 @@
 	<style name="skin_thumbtext_style" type="text" align="bottom" width="100%" y="5" enabled="false" bg="false" bgborder="false" css="calc:skin_settings.design_text_css + ' text-align:center; font-size:10px;'" txtshadow="get:skin_settings.design_text_txtshadow" />
 
 	<!--style menu slide -->
-	<style name="menu_row_style" type="container" align="topleft" width="100%" height="25" bgcapture="true" bgcolor="0xe23" bgalpha="0.5"/>
+	<style name="menu_row_style" type="container" align="topleft" width="100%" height="25" bgcapture="true" />
     <style name="indicator_style" type="container" align="left" x="0" width="5" height="25" bgcolor="0xFFFFFF" bgalpha="1" enabled="false" capture="false" />
     <style name="menu_text" type="text" align="left" x="10" bg="false" css="font-family:Arial; font-size:14px; color:#ffffff;" enabled="false" capture="false" />
 
@@ -597,18 +597,23 @@
 		</layer>	
 		<layer name="skin_thumbborder" type="container" x="get:skin_settings.design_thumbborder_padding" y="get:skin_settings.design_thumbborder_padding" width="calc:skin_settings.thumbs_width - 2*skin_settings.design_thumbborder_padding" height="calc:skin_settings.thumbs_height - 2*skin_settings.design_thumbborder_padding" visible="false" enabled="false" align="lefttop" bgborder="get:skin_settings.design_thumbborder_bgborder" bgroundedge="get:skin_settings.design_thumbborder_bgroundedge" /> -->
 		
-<layer name="left_menu_container" keep="true" type="container" align="left" x="10" y="0" width="150" height="250" zorder="3" bgcapture="false" capture="false" bgcolor="0xFFBC33" bgalpha="0.9">
+<layer name="left_menu_container" keep="true" type="container" align="left" edge="left" x="10" y="0" width="150" height="250" zorder="3" bgcapture="false" capture="false">
 
-    <layer name="left_menu_list" type="container" align="top" width="100%" height="500"> 
+	<layer name="btn_back" type="container" align="topleft" width="44" height="44" x="0" y="0">
+        <layer name="bg_back" type="container" align="center" width="44" height="44" 
+               bgcolor="0xFFFFFF" bgalpha="1" bgroundedge="22" bgcapture="true" 	
+               onclick="toggle_left_menu_display();">
+            
+            <layer name="icon_back" url="icons/right-arrow.png" align="center" width="30" height="30" scale="0.5" rotate="180" enabled="false" capture="false" />
+        </layer>
+    </layer>
 
-		<layer name="btn_back_prev" type="container" width="44" height="44" x="0" y="0">
-        	<layer name="bg_back" type="container" align="center" width="44" height="44" bgcolor="0xFFFFFF" bgalpha="1" bgroundedge="22" bgcapture="true" onclick="go_back();">
-            	<layer name="icon_back" url="icons/right-arrow.png" align="center" width="30" height="30" scale="0.5" enabled="false" capture="false" />
-        	</layer>
-    	</layer>
+    <layer name="place_list_group" type="container" align="top" width="100%" height="500"> 
+
+		
 
         <layer name="item_g6" style="menu_row_style" y="50" onclick="filter_scenes_by_tag('g6_scene'); update_menu_active('item_g6');">
-            <layer name="ind_g6" style="indicator_style" bgcolor="0xFFBB00" /> 
+            <layer name="ind_g6" style="indicator_style" /> 
             <layer name="txt_g6" style="menu_text" html="Giảng đường G6" />
         </layer>
 
@@ -622,12 +627,12 @@
             <layer name="txt_g8" style="menu_text" html="Giảng đường G8" />
         </layer>
 
-        <layer name="item_loivao" style="menu_row_style" y="140" onclick="loadscene(scene_cong_truong,null,MERGE,BLEND(1)); reset_thumbs_filter(); update_menu_active('item_loivao');">
+        <layer name="item_loivao" style="menu_row_style" y="140" onclick="filter_scenes_by_tag('loivao_scene'); update_menu_active('item_loivao');">
             <layer name="ind_loivao" style="indicator_style" />
             <layer name="txt_loivao" style="menu_text" html="Cổng trường" />
         </layer>
 
-        <layer name="item_ndn" style="menu_row_style" y="170" onclick="loadscene(scene_nha_da_nang,null,MERGE,BLEND(1)); reset_thumbs_filter(); update_menu_active('item_ndn');">
+        <layer name="item_ndn" style="menu_row_style" y="170" onclick="filter_scenes_by_tag('ndn_scene'); update_menu_active('item_ndn');">
             <layer name="ind_ndn" style="indicator_style" />
             <layer name="txt_ndn" style="menu_text" html="Nhà đa năng" />
         </layer>
@@ -1730,8 +1735,24 @@
 		set(layer[skin_btn_show_menu].visible, true);
 		delayedcall(skin_btn_show_alpha, get(hidetime), tween(layer[skin_btn_show_menu].alpha, 0.85, 0.85); );
 	</action>
-
-	<!--chức năng ẩn menu theo mẫu-->
+	<!--Chức năng ẩn menu slide bên trái-->
+	<action name="toggle_left_menu_display">
+    if(layer[place_list_group].visible == false,
+        set(layer[place_list_group].visible, true);
+        tween(layer[place_list_group].alpha, 1.0, 0.3);
+        
+        tween(layer[bg_orange].height, 250, 0.3);
+        
+        tween(layer[icon_back].rotate, 180, 0.3);
+    ,
+        tween(layer[place_list_group].alpha, 0.0, 0.3, default, set(layer[place_list_group].visible, false));
+        
+        tween(layer[bg_orange].height, 44, 0.3);
+        
+        tween(layer[icon_back].rotate, 0, 0.3);
+    );
+</action>
+	<!--chức năng ẩn menu theo bên phải mẫu-->
 	<action name="toggle_control_buttons">
     if(layer[skin_btn_prev].alpha == 1.0,
         tween(layer[skin_btn_prev].alpha, 0.0, 0.25);
@@ -1788,6 +1809,44 @@
 		tween(layer[btn_photo].alpha, 1.0, 0.25);
         tween(layer[btn_auto].alpha, 1.0, 0.25);
         tween(layer[btn_full].alpha, 1.0, 0.25);
+    );
+</action>
+
+	<action name="filter_scenes_by_tag">
+    set(target_tag, %1);
+    
+    for(set(i,0), i LT scene.count, inc(i),
+        if(scene[get(i)].tag == target_tag,
+            set(scene[get(i)].showinthumbs, true);
+        ,
+            set(scene[get(i)].showinthumbs, false);
+        );
+    );
+    
+    if(skin_settings.thumbs, 
+        copy(layer[skin_thumbs].visible, skin_settings.thumbs); 
+    );
+    skin_updatescroll();
+</action>
+
+	<action name="update_menu_active">
+    for(set(i,0), i LT layer.count, inc(i),
+        if(layer[get(i)].style == 'indicator_style', 
+            set(layer[get(i)].bgcolor, 0xFFFFFF); 
+        );
+        if(layer[get(i)].style == 'menu_text', 
+            set(layer[get(i)].css, 'font-family:Arial; font-size:14px; color:#ffffff;'); 
+        );
+    );
+
+    for(set(j,0), j LT layer[%1].children.count, inc(j),
+        set(c_name, get(layer[%1].children[get(j)].name));
+        
+        if(layer[get(c_name)].style == 'indicator_style',
+            set(layer[get(c_name)].bgcolor, 0xFFBC33); );
+        
+        if(layer[get(c_name)].style == 'menu_text',
+            set(layer[get(c_name)].css, 'font-family:Arial; font-size:14px; color:#FFBC33;'); );
     );
 </action>
 
