@@ -572,8 +572,8 @@
 			</layer>
 		</layer>
 
-		<layer name="skin_loadingtext" type="text" align="center" x="5" y="-5" html="get:skin_settings.loadingtext" visible="false" bg="false" enabled="false" css="calc:skin_settings.design_text_css + ' text-align:center; font-style:italic; font-size:22px;'" txtshadow="get:skin_settings.design_text_txtshadow" />
-		<layer name="skin_buttonglow"  style="skin_base" crop="64|384|64|64" align="center" x="0" y="1" scale="1.0" alpha="0.0" visible="false" enabled="false" />
+		<!-- <layer name="skin_loadingtext" type="text" align="center" x="5" y="-5" html="get:skin_settings.loadingtext" visible="false" bg="false" enabled="false" css="calc:skin_settings.design_text_css + ' text-align:center; font-style:italic; font-size:22px;'" txtshadow="get:skin_settings.design_text_txtshadow" />
+		<layer name="skin_buttonglow"  style="skin_base" crop="64|384|64|64" align="center" x="0" y="1" scale="1.0" alpha="0.0" visible="false" enabled="false" /> -->
 		
 		<!--Tạm ẩn phần nút sang ảnh tiếp theo-->
 		<!-- <layer name="btn_next_scene" type="container" align="right" width="230" height="9%" x="10" y="-100" onclick="if(skin_settings.thumbs_loop, skin_nextscene_loop(+1), skin_nextscene(+1) );" background="true" bgcolor="0x000000" bgalpha="0.5" bgcapture="true" bgroundedge="10">
@@ -582,7 +582,7 @@
 				css="text-align:center; font-size:16px; color:#FFFFFF; font-family:sans-serif; background:none" />
 		</layer> -->
 
-		<!--Tạm ẩn phần CỔNG TRƯỜNG,CHÍNH DIỆN ĐẠI HỌC NHA TRANG-->
+		<!--Tạm ẩn phần CỔNG TRƯỜNG,CHÍNH DIỆN ĐẠI HỌC NHA-->
 		<!-- <layer name="btn_prev_container" type="container" align="bottom" width="28%" height="15%" x="-10">
 			<layer name="icon_switch_scene" capture="false" type="container" align="leftcenter" width="20%" height="100%" scale="0.7">
 				<layer name="skin_next_btn"  style="skin_base" url="icons/up-arrow.png" align="top" scale="1.0" visible="true" enabled="true" width="100%" height="60%" onclick="if(skin_settings.thumbs_loop, skin_nextscene_loop(+1), skin_nextscene(+1) );"/>
@@ -591,7 +591,6 @@
 			<layer name="skin_title" type="text" zorder="0" x="30%" align="left" width="80%" enabled="false" bg="false" css="calc:skin_settings.design_text_css + ' text-align:left; font-style:italic; font-size:18px; word-wrap: break-word; white-space: normal;'" txtshadow="get:skin_settings.design_text_txtshadow" visible="false" onautosized="skin_video_updateseekbarwidth();" />
 		</layer>	
 		<layer name="skin_thumbborder" type="container" x="get:skin_settings.design_thumbborder_padding" y="get:skin_settings.design_thumbborder_padding" width="calc:skin_settings.thumbs_width - 2*skin_settings.design_thumbborder_padding" height="calc:skin_settings.thumbs_height - 2*skin_settings.design_thumbborder_padding" visible="false" enabled="false" align="lefttop" bgborder="get:skin_settings.design_thumbborder_bgborder" bgroundedge="get:skin_settings.design_thumbborder_bgroundedge" /> -->
-	
 		
 	
 	
@@ -608,132 +607,12 @@
 		<layer name="skin_btn_next_fs_icon" style="skin_base" crop="64|64|64|64" align="center" scale="0.5" enabled="false" />
 	</layer> -->
 
-
-	<!-- gyro plugin -->
+<!-- gyro plugin -->
 	<plugin name="skin_gyro" keep="true" url="" plugin_url="%VIEWER%/plugins/gyro2.js" softstart="1.0" desktopsupport="false" enabled="false"
 		onavailable="skin_arrange_buttons();"
 		ondenied="skin_gyro_ondenied();" 
 		/>
-		<!-- IMAGE -->
-		<layer name="center_preview_img"
-			   type="image"
-			   align="center"
-			   width="400"
-			   height="240"
-			   keepaspect="true"
-			   css="border-radius:14px;" />
-	</layer>
-
-
-
-
-	<action name="select_place">
-		<!-- %1 = image, %2 = text, %3 = scene -->
-
-		set(ui.haspreview,true);
-
-		<!-- show preview -->
-		set(layer[left_preview].visible,true);
-		set(layer[left_preview_img].url,%1);
-		set(layer[left_preview_text].html,%2);
-
-		<!-- đẩy UI sang phải -->
-		tween(layer[left_menu_arrow].x,260,0.35,easeOutExpo);
-		tween(layer[left_panel].x,260,0.35,easeOutExpo);
-		set(layer[left_panel].opened,true);
-
-		<!-- load scene -->
-		loadscene(%3,null,MERGE,BLEND(1));
-
-
-		<!-- reset màu tất cả các layer về trắng -->
-		set(layer[place_1].css,'font-size:14px;color:#ffffff;');
-		set(layer[place_2].css,'font-size:14px;color:#ffffff;');
-		set(layer[place_3].css,'font-size:14px;color:#ffffff;');
-		set(layer[place_4].css,'font-size:14px;color:#ffffff;');
-
-		<!-- đổi màu layer được chọn sang vàng -->
-		set(layer[%4].css,'font-size:14px;color:#ffd700;');
-	</action>
-
-	<action name="hide_left_preview">
-		set(ui.haspreview,false);
-		set(layer[left_preview].visible,false);
-
-		<!-- Panel và arrow thu về mép trái ảnh -->
-		tween(layer[left_menu_arrow].x,10,0.3,easeOutExpo);  <!-- Arrow sang sát trái -->
-		tween(layer[left_panel].x, get(layer[left_menu_arrow].x) + 48, 0.3,easeOutExpo); <!-- Panel ngang mép ảnh -->
-		set(layer[left_panel].opened,false);
-	</action>
-
-	<action name="show_left_preview">
-		set(ui.haspreview,true);
-		set(layer[left_preview].visible,true);
-		set(layer[left_preview_img].url,%1);
-		set(layer[left_preview_text].html,%2);
-
-		tween(layer[left_menu_arrow].x,get(ui.preview_x),0.3,easeOutExpo);
-		tween(layer[left_panel].x,get(ui.preview_x),0.3,easeOutExpo);
-	</action>
-	<action name="toggle_left_panel">
-		if(layer[left_panel].opened,
-		set(layer[left_panel].opened,false);
-		tween(layer[left_panel].x,-260,0.3,easeOutExpo);  <!-- luôn thu hẳn vào trong -->
-		if(ui.haspreview,
-		tween(layer[left_menu_arrow].x,get(layer[left_menu_arrow].x),0.3,easeOutExpo);  <!-- arrow giữ nguyên -->
-		,
-		tween(layer[left_menu_arrow].x,10,0.3,easeOutExpo);  <!-- arrow mặc định khi không có ảnh -->
-		);
-		,
-		set(layer[left_panel].opened,true);
-		if(ui.haspreview,
-		tween(layer[left_panel].x,get(layer[left_menu_arrow].x),0.3,easeOutExpo);  <!-- mở ngang arrow nếu có ảnh -->
-		,
-		tween(layer[left_panel].x,0,0.3,easeOutExpo);  <!-- mở bình thường -->
-		);
-		);
-	</action>
-	<action name="init_ui">
-		set(ui.preview_x,260);  <!-- mép phải ảnh -->
-		set(ui.haspreview,false);
-		set(ui.arrow_x_when_panel_closed,10); <!-- X mặc định arrow khi panel đóng -->
-	</action>
-
-	<action name="show_left_panel">
-		set(layer[left_panel].opened,true);
-		tween(layer[left_panel].x,0,0.3,easeOutExpo);
-	</action>
-
-	<action name="hide_left_panel">
-		set(layer[left_panel].opened,false);
-		tween(layer[left_panel].x,-260,0.3,easeOutExpo);
-	</action>
-	<action name="push_ui_right">
-		tween(layer[left_menu_arrow].x,270,0.3,easeOutExpo);
-		tween(layer[left_panel].x,get(ui.pushx),0.3,easeOutExpo);
-	</action>
-
-	<action name="reset_ui_left">
-		set(ui.arrow_x_when_panel_closed,get(layer[left_menu_arrow].x));
-		tween(layer[left_menu_arrow].x,10,0.3,easeOutExpo);
-		tween(layer[left_panel].x,0,0.3,easeOutExpo);
-	</action>
-
-	<action name="show_center_preview">
-		<!-- %1 = image -->
-		set(layer[center_preview].visible,true);
-		set(layer[center_preview_img].url,%1);
-
-		<!-- hiệu ứng nhẹ -->
-		set(layer[center_preview].alpha,0);
-		tween(layer[center_preview].alpha,1,0.2);
-	</action>
-
-	<action name="hide_center_preview">
-		tween(layer[center_preview].alpha,0,0.15,
-		set(layer[center_preview].visible,false);
-		);
-	</action>
+	
 
 		
 <action name="hide_all_thumbs" scope="local">
