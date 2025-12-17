@@ -146,6 +146,11 @@
 	<!-- skin_thumbtext_style - style/textfield for the (optional, skin_settings.thumbs_text) thumbnails texts -->
 	<style name="skin_thumbtext_style" type="text" align="bottom" width="100%" y="5" enabled="false" bg="false" bgborder="false" css="calc:skin_settings.design_text_css + ' text-align:center; font-size:10px;'" txtshadow="get:skin_settings.design_text_txtshadow" />
 
+	<!--style menu slide -->
+	<style name="menu_row_style" type="container" align="topleft" width="100%" height="25" bgcapture="true" bgcolor="0xe23" bgalpha="0.5"/>
+    <style name="indicator_style" type="container" align="left" x="0" width="5" height="25" bgcolor="0xFFFFFF" bgalpha="1" enabled="false" capture="false" />
+    <style name="menu_text" type="text" align="left" x="10" bg="false" css="font-family:Arial; font-size:14px; color:#ffffff;" enabled="false" capture="false" />
+
 	<!-- skin_hotspotstyle - style for the hotspots -->
 	<style name="skin_hotspotstyle" url="vtourskin_hotspot.png" edge="top" distorted="true"
 	       tooltip=""
@@ -592,8 +597,46 @@
 		</layer>	
 		<layer name="skin_thumbborder" type="container" x="get:skin_settings.design_thumbborder_padding" y="get:skin_settings.design_thumbborder_padding" width="calc:skin_settings.thumbs_width - 2*skin_settings.design_thumbborder_padding" height="calc:skin_settings.thumbs_height - 2*skin_settings.design_thumbborder_padding" visible="false" enabled="false" align="lefttop" bgborder="get:skin_settings.design_thumbborder_bgborder" bgroundedge="get:skin_settings.design_thumbborder_bgroundedge" /> -->
 		
+<layer name="left_menu_container" keep="true" type="container" align="left" x="10" y="0" width="150" height="250" zorder="3" bgcapture="false" capture="false" bgcolor="0xFFBC33" bgalpha="0.9">
+
+    <layer name="left_menu_list" type="container" align="top" width="100%" height="500"> 
+
+		<layer name="btn_back_prev" type="container" width="44" height="44" x="0" y="0">
+        	<layer name="bg_back" type="container" align="center" width="44" height="44" bgcolor="0xFFFFFF" bgalpha="1" bgroundedge="22" bgcapture="true" onclick="go_back();">
+            	<layer name="icon_back" url="icons/right-arrow.png" align="center" width="30" height="30" scale="0.5" enabled="false" capture="false" />
+        	</layer>
+    	</layer>
+
+        <layer name="item_g6" style="menu_row_style" y="50" onclick="filter_scenes_by_tag('g6_scene'); update_menu_active('item_g6');">
+            <layer name="ind_g6" style="indicator_style" bgcolor="0xFFBB00" /> 
+            <layer name="txt_g6" style="menu_text" html="Giảng đường G6" />
+        </layer>
+
+        <layer name="item_g7" style="menu_row_style" y="80" onclick="filter_scenes_by_tag('g7_scene'); update_menu_active('item_g7');">
+            <layer name="ind_g7" style="indicator_style" />
+            <layer name="txt_g7" style="menu_text" html="Giảng đường G7" />
+        </layer>
+
+        <layer name="item_g8" style="menu_row_style" y="110" onclick="filter_scenes_by_tag('g8_scene'); update_menu_active('item_g8');">
+            <layer name="ind_g8" style="indicator_style" />
+            <layer name="txt_g8" style="menu_text" html="Giảng đường G8" />
+        </layer>
+
+        <layer name="item_loivao" style="menu_row_style" y="140" onclick="loadscene(scene_cong_truong,null,MERGE,BLEND(1)); reset_thumbs_filter(); update_menu_active('item_loivao');">
+            <layer name="ind_loivao" style="indicator_style" />
+            <layer name="txt_loivao" style="menu_text" html="Cổng trường" />
+        </layer>
+
+        <layer name="item_ndn" style="menu_row_style" y="170" onclick="loadscene(scene_nha_da_nang,null,MERGE,BLEND(1)); reset_thumbs_filter(); update_menu_active('item_ndn');">
+            <layer name="ind_ndn" style="indicator_style" />
+            <layer name="txt_ndn" style="menu_text" html="Nhà đa năng" />
+        </layer>
+
+    </layer>
+</layer>
 	
-	
+
+
 	</layer>
 
 	<!-- previous/next scene buttons for the hidden skin mode -->
