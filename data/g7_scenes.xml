@@ -1,0 +1,43 @@
+<krpano>
+	<scene name="scene_chinh_dien_g7" title="Chính Diện G7" tags="g7_scene" onstart="" thumburl="/panos/chinh_dien_g7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/panos/chinh_dien_g7.tiles/preview.jpg" />
+
+		<image>
+			<sphere url="/panos/chinh_dien_g7.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_loi_vao_g7" title="loi_vao_g7" tags="g7_scene" onstart="" thumburl="/panos/loi_vao_g7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/panos/loi_vao_g7.tiles/preview.jpg" />
+
+		<image hfov="1.00" vfov="0.750000" voffset="0.00">
+			<flat url="/panos/loi_vao_g7.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x960,2560x1920" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_lop_hoc_g7" title="lop_hoc_g7" tags="g7_scene" onstart="" thumburl="/panos/lop_hoc_g7.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/panos/lop_hoc_g7.tiles/preview.jpg" />
+
+		<image>
+			<sphere url="/panos/lop_hoc_g7.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
+		</image>
+
+	</scene>
+</krpano>

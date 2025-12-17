@@ -1,0 +1,57 @@
+<krpano>
+	<scene name="scene_chinh_dien_ndn" title="chinh_dien_ndn" tags="ndn_scene" onstart="" thumburl="/panos/chinh_dien_ndn.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/panos/chinh_dien_ndn.tiles/preview.jpg" />
+
+		<image>
+			<sphere url="/panos/chinh_dien_ndn.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_loi_vao_ndn" title="loi_vao_ndn" tags="ndn_scene" onstart="" thumburl="/panos/loi_vao_ndn.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/panos/loi_vao_ndn.tiles/preview.jpg" />
+
+		<image>
+			<sphere url="/panos/loi_vao_ndn.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_lop_hoc_ndn" title="lop_hoc_NDN" tags="ndn_scene" onstart="" thumburl="/panos/lop_hoc_NDN.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/panos/lop_hoc_NDN.tiles/preview.jpg" />
+
+		<image>
+			<sphere url="/panos/lop_hoc_NDN.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
+		</image>
+
+	</scene>
+
+	<scene name="scene_van_phong_khoa" title="van_phong_khoa" tags="ndn_scene" onstart="" thumburl="/panos/van_phong_khoa.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+		
+		<control bouncinglimits="calc:image.cube ? true : false" />
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="/panos/van_phong_khoa.tiles/preview.jpg" />
+
+		<image>
+			<sphere url="/panos/van_phong_khoa.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
+		</image>
+
+	</scene>
+</krpano>
