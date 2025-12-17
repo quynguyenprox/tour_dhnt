@@ -575,20 +575,26 @@
 		<layer name="skin_loadingtext" type="text" align="center" x="5" y="-5" html="get:skin_settings.loadingtext" visible="false" bg="false" enabled="false" css="calc:skin_settings.design_text_css + ' text-align:center; font-style:italic; font-size:22px;'" txtshadow="get:skin_settings.design_text_txtshadow" />
 		<layer name="skin_buttonglow"  style="skin_base" crop="64|384|64|64" align="center" x="0" y="1" scale="1.0" alpha="0.0" visible="false" enabled="false" />
 		
-		<!--Tạm ẩn-->
+		<!--Tạm ẩn phần nút sang ảnh tiếp theo-->
 		<!-- <layer name="btn_next_scene" type="container" align="right" width="230" height="9%" x="10" y="-100" onclick="if(skin_settings.thumbs_loop, skin_nextscene_loop(+1), skin_nextscene(+1) );" background="true" bgcolor="0x000000" bgalpha="0.5" bgcapture="true" bgroundedge="10">
 			<layer name="icon_next_scene" capture="false" type="text" align="rightcenter"  url="icons/right-arrow.png" width="60" height="60" scale="0.7"/>
 			<layer name="text_next_scene" capture="false" type="text" align="leftcenter" html="" width="80%" height="18" bg="false"
 				css="text-align:center; font-size:16px; color:#FFFFFF; font-family:sans-serif; background:none" />
 		</layer> -->
-		<layer name="btn_prev_container" type="container" align="bottom" width="28%" height="15%" x="-10">
+
+		<!--Tạm ẩn phần CỔNG TRƯỜNG,CHÍNH DIỆN ĐẠI HỌC NHA TRANG-->
+		<!-- <layer name="btn_prev_container" type="container" align="bottom" width="28%" height="15%" x="-10">
 			<layer name="icon_switch_scene" capture="false" type="container" align="leftcenter" width="20%" height="100%" scale="0.7">
 				<layer name="skin_next_btn"  style="skin_base" url="icons/up-arrow.png" align="top" scale="1.0" visible="true" enabled="true" width="100%" height="60%" onclick="if(skin_settings.thumbs_loop, skin_nextscene_loop(+1), skin_nextscene(+1) );"/>
 				<layer name="skin_prev_btn"  style="skin_base" url="icons/down-arrow.png" align="bottom" scale="1.0" visible="true" enabled="true" width="80%" height="40%" onclick="go_back();"/>
 			</layer>
 			<layer name="skin_title" type="text" zorder="0" x="30%" align="left" width="80%" enabled="false" bg="false" css="calc:skin_settings.design_text_css + ' text-align:left; font-style:italic; font-size:18px; word-wrap: break-word; white-space: normal;'" txtshadow="get:skin_settings.design_text_txtshadow" visible="false" onautosized="skin_video_updateseekbarwidth();" />
 		</layer>	
-		<layer name="skin_thumbborder" type="container" x="get:skin_settings.design_thumbborder_padding" y="get:skin_settings.design_thumbborder_padding" width="calc:skin_settings.thumbs_width - 2*skin_settings.design_thumbborder_padding" height="calc:skin_settings.thumbs_height - 2*skin_settings.design_thumbborder_padding" visible="false" enabled="false" align="lefttop" bgborder="get:skin_settings.design_thumbborder_bgborder" bgroundedge="get:skin_settings.design_thumbborder_bgroundedge" />
+		<layer name="skin_thumbborder" type="container" x="get:skin_settings.design_thumbborder_padding" y="get:skin_settings.design_thumbborder_padding" width="calc:skin_settings.thumbs_width - 2*skin_settings.design_thumbborder_padding" height="calc:skin_settings.thumbs_height - 2*skin_settings.design_thumbborder_padding" visible="false" enabled="false" align="lefttop" bgborder="get:skin_settings.design_thumbborder_bgborder" bgroundedge="get:skin_settings.design_thumbborder_bgroundedge" /> -->
+	
+		
+	
+	
 	</layer>
 
 	<!-- previous/next scene buttons for the hidden skin mode -->
@@ -602,239 +608,6 @@
 		<layer name="skin_btn_next_fs_icon" style="skin_base" crop="64|64|64|64" align="center" scale="0.5" enabled="false" />
 	</layer> -->
 
-	<!-- LEFT MENU ARROW BUTTON -->
-	<layer name="left_menu_arrow"
-       keep="true"
-       type="image"
-       url="icons/right-arrow.png"
-       align="lefttop"
-       x="10"
-       y="160"
-       width="48"
-       height="48"
-       capture="true"
-       handcursor="true"
-       zorder="9999"
-       alpha="0.7"
-       onhover="tween(alpha,1.0,0.2);"
-       onout="tween(alpha,0.7,0.2);"
-       onclick="toggle_left_panel();" />
-
-	<layer name="left_panel"
-       keep="true"
-       type="container"
-       align="lefttop"
-       x="-260"
-       y="220"
-       width="260"
-       height="420"
-       bgcolor="0x000000"
-       bgalpha="0"
-       zorder="9998"
-	   bg="false"
-       opened="false">
-
-		<!-- TITLE -->
-		<layer name="panel_title"
-			   type="text"
-			   html="ĐỊA ĐIỂM"
-			     bg="false"
-			   align="lefttop"
-			   x="15"
-			   y="10"
-			   css="font-size:16px;color:#ffffff;font-weight:bold;" />
-
-		<!-- PLACE 1 -->
-		<layer name="place_1"
-			   type="text"
-			   html="📍 Cổng trường"
-			   align="lefttop"
-			     bg="false"
-			   x="15"
-			   y="50"
-			   css="font-size:14px;color:#ffffff;"
-			   handcursor="true"
-			     onover=" set(layer[place_1].css,'font-size:14px;color:#ffd700;');
-           show_center_preview(skin/images/cong-truong.jpg); "
-       onout="set(layer[place_1].css,'font-size:14px;color:#ffffff;');
-           hide_center_preview();"
-				onclick="select_place(skin/images/cong-truong.jpg,'Cổng trường', scene_chinh_dien_dhnt,'place_1');"/>
-
-		<!-- PLACE 2 -->
-		<layer name="place_2"
-			   type="text"
-			   html="📍 Giảng đường G8"
-			     bg="false"
-			   align="lefttop"
-			   x="15"
-			   y="100"
-			   css="font-size:14px;color:#ffffff;"
-			   handcursor="true"
-		   onover=" set(layer[place_2].css,'font-size:14px;color:#ffd700;');
-           show_center_preview(skin/images/giang-duong-g8.jpg); "
-   onout="set(layer[place_2].css,'font-size:14px;color:#ffffff;');
-           hide_center_preview();"
-			  	  onclick="select_place(skin/images/giang-duong-g8.jpg,'Giảng đường G8', scene_chinh_dien_g8 ,'place_2');"/>
-		
-		<layer name="place_3"
-			   type="text"
-			   html="📍 Giảng đường G6"
-			     bg="false"
-			   align="lefttop"
-			   x="15"
-			   y="150"
-			   css="font-size:14px;color:#ffffff;"
-			   handcursor="true"
-		   onover=" set(layer[place_3].css,'font-size:14px;color:#ffd700;');
-           show_center_preview(skin/images/giang-duong-g6.jpg); "
-   onout="set(layer[place_3].css,'font-size:14px;color:#ffffff;');
-           hide_center_preview();"
-			   onclick="select_place(skin/images/giang-duong-g6.jpg,'Giảng đường G6', scene_chinh_dien_g6,'place_3');"/>
-
-
-		<layer name="place_4"
-			   type="text"
-			   html="📍 Nhà đa năng + Giảng đường G7"
-			     bg="false"
-			   align="lefttop"
-			   x="15"
-			   y="200"
-			   css="font-size:14px;color:#ffffff;"
-			   handcursor="true"
-			onover=" set(layer[place_4].css,'font-size:14px;color:#ffd700;');
-			show_center_preview(skin/images/nha-da-nang.jpg); "
-   onout="set(layer[place_4].css,'font-size:14px;color:#ffffff;');
-           hide_center_preview();"
-			   onclick="select_place(skin/images/nha-da-nang.jpg,'Nhà đa năng + Giảng đường G7', scene_chinh_dien_ndn ,'place_4');"/>
-
-	</layer>
-
-	<!-- LEFT PREVIEW IMAGE HOÀN CHỈNH -->
-	<layer name="left_preview"
-		   keep="true"
-		   type="container"
-		   align="leftcenter"
-		   x="10"
-		   y="0"
-		   width="240"
-		   height="400"
-		   bgcolor="0x000000"
-		   bgalpha="0"
-		   visible="false"
-		   zorder="10000">
-		
-		<!-- SEPARATOR LINE -->
-		<layer name="left_preview_separator"
-			   type="container"
-			   align="lefttop"
-			   x="10"
-			   y="50"
-			   width="220"
-			   height="2"
-			   bgcolor="0xffffff"
-			   bgalpha="0.8"
-			   zorder="10001" />
-
-
-		<!-- HEADER BAR -->
-		<layer name="left_preview_header"
-			   type="container"
-			   align="lefttop"
-			   x="0"
-			   y="0"
-			   width="240"
-			   height="25"
-			   bgcolor="0x000000"
-			   bgalpha="0"
-			   zorder="10001">
-
-			<!-- TITLE TEXT CONTAINER -->
-			<layer name="left_preview_text_container"
-				   type="container"
-				   align="lefttop"
-				   x="25"
-				   y="0"
-				   width="215"
-				   height="25"
-				   bg="false">
-
-				<layer name="left_preview_text"
-					   type="text"
-					   align="center"
-					   x="0"
-					   y="0"
-					   width="215"
-					   height="25"
-					   bg="false"
-					   css="font-size:14px;color:#ffffff;font-weight:bold;line-height:25px;pointer-events:none;" />
-			</layer>
-
-			<!-- CLOSE BUTTON -->
-			<layer name="left_preview_close"
-				   type="image"
-				   url="icons/close.png"
-				   align="lefttop"
-				   x="5"
-				   y="2"
-				   width="20"
-				   height="20"
-				   handcursor="true"
-				   alpha="0.8"
-				   onhover="tween(alpha,1,0.15);"
-				   onout="tween(alpha,0.8,0.15);"
-				   onclick="hide_left_preview();" />
-		</layer>
-
-		<!-- VIỀN VÀNG -->
-		<layer name="left_preview_border"
-       type="container"
-       align="lefttop"
-       x="10"
-       y="98"
-       width="220"
-       height="115"
-       bgcolor="0xffd700"
-       bgalpha="1"
-       zorder="10002"
-       css="border-radius:12px;
-            box-shadow:0 0 15px rgba(0,0,0,0.6);" />
-
-
-
-		<!-- IMAGE -->
-		<layer name="left_preview_img"
-       type="image"
-       align="lefttop"
-       x="12"
-       y="100"
-       width="216"
-       height="111"
-       keepaspect="true"
-       zorder="10003" />
-	</layer>
-
-		<!-- CENTER HOVER PREVIEW -->
-	<layer name="center_preview"
-		   keep="true"
-		   type="container"
-		   align="center"
-		   x="0"
-		   y="0"
-		   width="420"
-		   height="260"
-		   visible="false"
-		   zorder="10000">
-
-		<!-- BORDER BACKGROUND -->
-		<layer name="center_preview_border"
-			   type="container"
-			   align="center"
-			   width="410"
-			   height="250"
-			   bgcolor="0xffffff"
-			   bgalpha="1"
-			   css="border-radius:16px;
-                box-shadow:0 0 30px rgba(0,0,0,0.7);" />
 
 	<!-- gyro plugin -->
 	<plugin name="skin_gyro" keep="true" url="" plugin_url="%VIEWER%/plugins/gyro2.js" softstart="1.0" desktopsupport="false" enabled="false"
