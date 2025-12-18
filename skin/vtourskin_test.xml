@@ -618,7 +618,7 @@
 
 		
 
-        <layer name="item_g6" style="menu_row_style" y="50" onclick="filter_scenes_by_tag('g6_scene'); update_menu_active('item_g6');">
+        <layer name="item_g6" style="menu_row_style" y="50" onclick="update_menu_active('item_g6'); skin_showthumbs('g6_scene'); ">
             <layer name="ind_g6" style="indicator_style" /> 
             <layer name="txt_g6" style="menu_text" html="Giảng đường G6" />
         </layer>
@@ -1791,10 +1791,6 @@
     if(layer[skin_btn_prev].alpha == 1.0,
         tween(layer[skin_btn_prev].alpha, 0.0, 0.25);
         tween(layer[btn_view].alpha, 0.0, 0.25);
-        tween(layer[btn_music].alpha, 0.0, 0.25);
-        tween(layer[btn_info].alpha, 0.0, 0.25);
-        tween(layer[btn_info_circle].alpha, 0.0, 0.25);
-        tween(layer[btn_map].alpha, 0.0, 0.25);
         tween(layer[btn_menu].alpha, 0.0, 0.25);
         tween(layer[btn_360].alpha, 0.0, 0.25);
         tween(layer[btn_vr].alpha, 0.0, 0.25);
@@ -1806,10 +1802,7 @@
         delayedcall(0.25, 
             set(layer[skin_btn_prev].visible, false);
             set(layer[btn_view].visible, false);
-            set(layer[btn_music].visible, false);
             set(layer[btn_info].visible, false);
-            set(layer[btn_info_circle].visible, false);
-            set(layer[btn_map].visible, false);
             set(layer[btn_menu].visible, false);
             set(layer[btn_360].visible, false);
             set(layer[btn_vr].visible, false);
@@ -1820,10 +1813,7 @@
       ,
         set(layer[skin_btn_prev].visible, true);
         set(layer[btn_view].visible, true);
-        set(layer[btn_music].visible, true);
         set(layer[btn_info].visible, true);
-        set(layer[btn_info_circle].visible, true);
-        set(layer[btn_map].visible, true);
         set(layer[btn_menu].visible, true);
         set(layer[btn_360].visible, true);
         set(layer[btn_vr].visible, true);
@@ -1833,10 +1823,7 @@
 
         tween(layer[skin_btn_prev].alpha, 1.0, 0.25);
         tween(layer[btn_view].alpha, 1.0, 0.25);
-        tween(layer[btn_music].alpha, 1.0, 0.25);
         tween(layer[btn_info].alpha, 1.0, 0.25);
-        tween(layer[btn_info_circle].alpha, 1.0, 0.25);
-        tween(layer[btn_map].alpha, 1.0, 0.25);
         tween(layer[btn_menu].alpha, 1.0, 0.25);
         tween(layer[btn_360].alpha, 1.0, 0.25);
         tween(layer[btn_vr].alpha, 1.0, 0.25);
@@ -1902,7 +1889,7 @@
 	</action>
 
 
-	<action name="skin_showthumbs" scope="local" args="show">
+	<!-- <action name="skin_showthumbs" scope="local" args="show">
 		if(show == null, if(layer[skin_thumbs].state == 'closed', set(show,true), set(show,false)); );
 		if(show,
 			set(layer[skin_thumbs].state, 'opened');
@@ -1916,7 +1903,65 @@
 			tween(layer[skin_thumbs].alpha, 0.0, 0.25, easeOutQuint);
 			tween(layer[skin_scroll_layer].y, calc(- area.pixelheight / 2), 0.5, easeOutQuint, set(layer[skin_thumbs_container].visible, false););
 		);
-	</action>
+	</action> -->
+	<action name="skin_showthumbs" scope="local" args="tag">
+
+    <!-- ===============================
+         1. FILTER SCENE BẰNG THUMBVISIBLE
+         =============================== -->
+
+    if(tag == null,
+        for(set(i,0), i LT scene.count, inc(i),
+            set(scene[get(i)].thumbvisible, true);
+        );
+    ,
+        for(set(i,0), i LT scene.count, inc(i),
+            if(scene[get(i)].tags AND scene[get(i)].tags.indexof(tag) GE 0,
+                set(scene[get(i)].thumbvisible, true);
+            ,
+                set(scene[get(i)].thumbvisible, false);
+            );
+        );
+    );
+
+    <!-- ===============================
+         2. BẮT BUỘC RELOAD THUMBS
+         =============================== -->
+
+    skin_reloadthumbs();
+
+    <!-- ===============================
+         3. MỞ / ĐÓNG PANEL (GIỮ NGUYÊN)
+         =============================== -->
+
+    if(layer[skin_thumbs].state == 'closed',
+        set(show,true);
+    ,
+        set(show,false);
+    );
+
+    if(show,
+        set(layer[skin_thumbs].state, 'opened');
+        tween(layer[skin_thumbs].alpha, 1.0, 0.25);
+        tween(layer[skin_scroll_layer].y,
+              calc(- area.pixelheight / 2 + layer[skin_thumbs].height + 65),
+              0.5, easeOutQuint);
+        set(layer[skin_thumbs_container].visible, true);
+        tween(layer[skin_thumbs_container].alpha, 1.0, 0.25);
+        tween(layer[skin_map].alpha, 0.0, 0.25,
+              default, set(layer[skin_map].visible,false));
+    ,
+        set(layer[skin_thumbs].state, 'closed');
+        tween(layer[skin_thumbs].alpha, 0.0, 0.25, easeOutQuint);
+        tween(layer[skin_scroll_layer].y,
+              calc(- area.pixelheight / 2),
+              0.5, easeOutQuint,
+              set(layer[skin_thumbs_container].visible, false);
+        );
+    );
+
+</action>
+
 
 
 	<action name="skin_showmap" scope="local" args="show">
