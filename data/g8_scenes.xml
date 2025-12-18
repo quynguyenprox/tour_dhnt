@@ -11,6 +11,8 @@
 			<sphere url="/panos/chinh_dien_g8.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
 		</image>
 
+		<hotspot name="spot1882183852" style="skin_hotspotstyle" ath="39.821" atv="9.622" depth="1000.0" linkedscene="scene_loi_vao_g8" linkedscene_hoffset="0.0" use3dtransition="true"/>
+
 	</scene>
 
 	<scene name="scene_loi_vao_g8" title="loi_vao_g8" tags="g8_scene" onstart="" thumburl="/panos/loi_vao_g8.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -25,6 +27,10 @@
 			<flat url="/panos/loi_vao_g8.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x960,2560x1920" />
 		</image>
 
+		<hotspot name="spot1882183967" style="skin_hotspotstyle" ath="-0.209" atv="0.093" depth="1000.0" distorted="false" zoom="false" linkedscene="scene_chinh_dien_g8" linkedscene_hoffset="0.0" use3dtransition="true"/>
+
+		<hotspot name="spot1882184058" style="skin_hotspotstyle" ath="0.344" atv="0.072" depth="1000.0" distorted="false" zoom="false" linkedscene="scene_lop_hoc_g8" linkedscene_hoffset="0.0" use3dtransition="true"/>
+	
 	</scene>
 
 	<scene name="scene_lop_hoc_g8" title="lop_hoc_g8" tags="g8_scene" onstart="" thumburl="/panos/lop_hoc_g8.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -39,5 +45,7 @@
 			<sphere url="/panos/lop_hoc_g8.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
 		</image>
 
+		<hotspot name="spot1882184260" style="skin_hotspotstyle" ath="-179.942" atv="22.812" depth="1000.0" linkedscene="scene_loi_vao_g8" linkedscene_hoffset="0.0" use3dtransition="true"/>
+	
 	</scene>
 </krpano>

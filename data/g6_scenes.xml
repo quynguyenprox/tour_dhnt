@@ -10,6 +10,8 @@
 		<image>
 			<sphere url="/panos/chinh_dien_g6.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
 		</image>
+		
+		<hotspot name="spot1882170428" style="skin_hotspotstyle" ath="12.971" atv="23.917" depth="1000.0" linkedscene="scene_loi_vao_g6" linkedscene_hoffset="0.0" use3dtransition="true"/>
 
 	</scene>
 
@@ -24,6 +26,10 @@
 		<image hfov="1.00" vfov="1.333333" voffset="0.00">
 			<flat url="/panos/loi_vao_g6.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,512x684,1024x1366,2048x2732" />
 		</image>
+		
+		<hotspot name="spot1882170731" style="skin_hotspotstyle" ath="-0.213" atv="0.144" depth="1000.0" distorted="false" zoom="false" linkedscene="scene_chinh_dien_g6" linkedscene_hoffset="0.0" use3dtransition="true"/>
+		
+		<hotspot name="spot1882170890" style="skin_hotspotstyle" ath="0.33" atv="0.173" depth="1000.0" distorted="false" zoom="false" linkedscene="scene_lop_hthnc_g6" linkedscene_hoffset="0.0" use3dtransition="true"/>
 
 	</scene>
 
@@ -38,6 +44,8 @@
 		<image>
 			<sphere url="/panos/lop_hthnc_g6.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
 		</image>
+
+		<hotspot name="spot1882171036" style="skin_hotspotstyle" ath="-87.804" atv="23.289" depth="1000.0" linkedscene="scene_loi_vao_g6" linkedscene_hoffset="0.0" use3dtransition="true"/>
 
 	</scene>
 </krpano>
