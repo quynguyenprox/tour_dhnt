@@ -11,5 +11,7 @@
 			<sphere url="/panos/chinh_dien_dhnt.tiles/l%l/%v/l%l_%v_%h.jpg" multires="512,1280x640,2560x1280" />
 		</image>
 
+		<hotspot name="spot1882189475" style="skin_hotspotstyle" ath="43.93" atv="11.146" depth="1000.0" linkedscene="scene_chinh_dien_g8" linkedscene_hoffset="0.0" use3dtransition="true"/>
+
 	</scene>
 </krpano>
